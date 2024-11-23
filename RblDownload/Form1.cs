@@ -126,6 +126,30 @@ namespace RblDownload
         {
             File.Copy(FilePathText.Text, Filepath, true);
         }
-  
+
+        private void Form_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.Copy; // 指示可以进行复制操作
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None;
+            }
+        }
+
+        private void Form_DragDrop(object sender, DragEventArgs e)
+        {
+            // 获取所有拖进来的文件
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+
+            FilePathText.Text = files[0];
+            X1Type.SelectedIndex = ReadFile(FilePathText.Text);
+           
+        }
+
+
+
     }
 }

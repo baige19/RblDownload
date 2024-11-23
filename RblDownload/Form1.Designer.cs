@@ -1,4 +1,6 @@
-﻿namespace RblDownload
+﻿using System.Windows.Forms;
+
+namespace RblDownload
 {
     partial class Form1
     {
@@ -78,6 +80,7 @@
             // 
             // Form1
             // 
+            this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(676, 393);
@@ -87,6 +90,8 @@
             this.Controls.Add(this.FilePathText);
             this.Name = "Form1";
             this.Text = "X1内核下载";
+            this.DragDrop += new System.Windows.Forms.DragEventHandler(Form_DragDrop);
+            this.DragEnter += new DragEventHandler(Form_DragEnter); // 绑定拖放事件处理程序
             this.ResumeLayout(false);
             this.PerformLayout();
 
